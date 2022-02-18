@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Api(value = "Swagger2DemoRestController", description = "REST Apis related to Ville Entity!!!!")
 @RestController
 public class WeatherServiceController {
 
@@ -39,6 +40,15 @@ public class WeatherServiceController {
 
 	}
 
+
+	@ApiOperation(value = "Get meteo in the System ", response = Ville.class, tags = "getWeatherBycity")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Suceess|OK"),
+			@ApiResponse(code = 401, message = "not authorized!"),
+			@ApiResponse(code = 403, message = "forbidden!!!"),
+			@ApiResponse(code = 404, message = "not found!!!") })
+
+
 	///récupération de la météo avec le nom de la ville
 	@RequestMapping(value = "/getWeatherDetailsByName/{villeName}", method = RequestMethod.GET)
 	public String getWeatherBycity(@PathVariable String villeName) {
@@ -52,6 +62,7 @@ public class WeatherServiceController {
 		return "Aucune météo trouvée";
 	}
 
+	@ApiOperation(value = "Get meteo in the System ", response = Ville.class, tags = "getWeatherByZip")
 	///récupération de la météo avec le code postal
 	@RequestMapping(value = "/getWeatherDetailsByZip/{zip}", method = RequestMethod.GET)
 	public String getWeatherByZip(@PathVariable Integer zip) {
@@ -65,6 +76,7 @@ public class WeatherServiceController {
 		return "Aucune météo trouvée";
 	}
 
+	@ApiOperation(value = "Get specific Student By Country in the System ", response = Ville.class, tags = "getWeatherByCountry")
 	///récupération des météos d'un pays
 	@RequestMapping(value = "/getWeatherDetailsByCountry/{pays}", method = RequestMethod.GET)
 	public String getWeatherByCountry(@PathVariable String pays) {

@@ -1,8 +1,13 @@
 package com.example.weather.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class Ville {
+    @ApiModelProperty(notes = "Nom de la ville",name="nom",required=true,value="test nom")
 	private String nom;
+    @ApiModelProperty(notes = "Code postal de la ville",name="codePostal",required=true,value="test codePostal")
 	private int codePostal;
+    @ApiModelProperty(notes = "Meteo de la cille",name="meteo",required=true,value="test meteo")
 	private String meteo;
 
 	public Ville () {
